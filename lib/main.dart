@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_sm/provider/count_provider.dart';
+import 'package:practice_sm/provider/sliderProvider.dart';
+import 'package:practice_sm/slider_homePage.dart';
 import 'package:provider/provider.dart';
 
 import 'stf_homepage.dart';
@@ -14,16 +16,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    print('build');
-    return ChangeNotifierProvider(
-      create: (context) => CountProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CountProvider()),
+        ChangeNotifierProvider(create: (context) => SliderProvider())
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: StatefulHomepage(),
+        home: SliderPage(),
       ),
     );
   }
