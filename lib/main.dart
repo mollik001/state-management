@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:practice_sm/favourite_page.dart';
 import 'package:practice_sm/provider/count_provider.dart';
+import 'package:practice_sm/provider/favourite_provider.dart';
 import 'package:practice_sm/provider/sliderProvider.dart';
 import 'package:practice_sm/slider_homePage.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => CountProvider()),
-        ChangeNotifierProvider(create: (context) => SliderProvider())
+        ChangeNotifierProvider(create: (context) => SliderProvider()),
+        ChangeNotifierProvider(create: (context) => FavouriteProvider())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: SliderPage(),
+        home: Favourite(),
       ),
     );
   }
